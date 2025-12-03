@@ -34,14 +34,18 @@ public final class UseListsAndMaps {
          */
         LinkedList<Integer> list = new LinkedList<>();
         list.addAll(arr);
-        System.out.println(arr);
-        System.out.println(list);
         
+
         /*
          * 3) Using "set" and "get" and "size" methods, swap the first and last
          * element of the first list. You can not use any "magic number".
          * (Suggestion: use a temporary variable)
          */
+        int first= arr.removeFirst();
+        arr.addFirst(arr.removeLast());
+        arr.addLast(first);
+        System.out.println(arr);
+        System.out.println(list);
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
