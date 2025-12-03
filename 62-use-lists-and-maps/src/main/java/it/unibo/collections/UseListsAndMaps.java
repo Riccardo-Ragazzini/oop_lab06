@@ -1,6 +1,7 @@
 package it.unibo.collections;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -60,18 +61,17 @@ public final class UseListsAndMaps {
          * using the previous lists. In order to measure times, use as example
          * TestPerformance.java.
          */
-        long time = System.nanoTime();
+        long millis;
+        long time;
+
+        
+        time = System.nanoTime();
         for(int i =0; i<10000; i++){
             arr.addFirst(i);
         }
         time = System.nanoTime() - time;
-        var millis = TimeUnit.NANOSECONDS.toMillis(time);
-        System.out.println(// NOPMD
-                time
-                + "ns ("
-                + millis
-                + "ms)"
-        );
+        millis = TimeUnit.NANOSECONDS.toMillis(time);
+        System.out.println(time + "ns (" + millis + "ms)" );
 
         time = System.nanoTime();
         for(int i =0; i<10000; i++){
@@ -79,12 +79,7 @@ public final class UseListsAndMaps {
         }
         time = System.nanoTime() - time;
         millis = TimeUnit.NANOSECONDS.toMillis(time);
-        System.out.println(// NOPMD
-                time
-                + "ns ("
-                + millis
-                + "ms)"
-        );
+        System.out.println(time + "ns (" + millis + "ms)" );
 
         /*
          * 6) Measure the performance of reading 1000 times an element whose
@@ -92,6 +87,7 @@ public final class UseListsAndMaps {
          * LinkedList, using the collections of point 5. In order to measure
          * times, use as example TestPerformance.java.
          */
+
         /*
          * 7) Build a new Map that associates to each continent's name its
          * population:
@@ -108,6 +104,19 @@ public final class UseListsAndMaps {
          *
          * Oceania -> 38,304,000
          */
+        Map<String,Long> world = new HashMap<>();
+        world.put("Africa",1_110_635_000L);
+        world.put("Americas",972_005_000L);        
+        world.put("Antartica",0L);
+        
+        world.put("Asia",4_298_723_000L);
+        
+        world.put("Europe",742_452_000L);
+        world.put("Oceania",38_304_000L);
+        
+
+        
+
         /*
          * 8) Compute the population of the world
          */
