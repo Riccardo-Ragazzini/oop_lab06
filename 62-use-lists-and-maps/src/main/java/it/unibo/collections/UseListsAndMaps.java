@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 /**
  * Example class using {@link List} and {@link Map}.
@@ -44,11 +45,14 @@ public final class UseListsAndMaps {
         int first= arr.removeFirst();
         arr.addFirst(arr.removeLast());
         arr.addLast(first);
-        System.out.println(arr);
-        System.out.println(list);
+        
         /*
          * 4) Using a single for-each, print the contents of the arraylist.
          */
+        for (Integer n : arr){
+            System.out.println(n);
+        }
+        
         /*
          * 5) Measure the performance of inserting new elements in the head of
          * the collection: measure the time required to add 100.000 elements as
@@ -56,6 +60,32 @@ public final class UseListsAndMaps {
          * using the previous lists. In order to measure times, use as example
          * TestPerformance.java.
          */
+        long time = System.nanoTime();
+        for(int i =0; i<10000; i++){
+            arr.addFirst(i);
+        }
+        time = System.nanoTime() - time;
+        var millis = TimeUnit.NANOSECONDS.toMillis(time);
+        System.out.println(// NOPMD
+                time
+                + "ns ("
+                + millis
+                + "ms)"
+        );
+
+        time = System.nanoTime();
+        for(int i =0; i<10000; i++){
+            list.addFirst(i);
+        }
+        time = System.nanoTime() - time;
+        millis = TimeUnit.NANOSECONDS.toMillis(time);
+        System.out.println(// NOPMD
+                time
+                + "ns ("
+                + millis
+                + "ms)"
+        );
+
         /*
          * 6) Measure the performance of reading 1000 times an element whose
          * position is in the middle of the collection for both ArrayList and
